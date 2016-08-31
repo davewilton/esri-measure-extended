@@ -56,8 +56,8 @@ define([
         });
 
         it('two points should be measured', function () {
-          var length = widget._createAndMeasureLine([55, 55], [60, 60])
-          assert.equal(length, 0.007047439347675955);
+          var length = widget._createAndMeasureLine([55, 55], [60, 60]);
+          assert.equal(length.toPrecision(2), 0.0070);
         });
 
         it('format numbers for display', function () {
