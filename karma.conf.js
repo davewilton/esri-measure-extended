@@ -15,11 +15,18 @@ module.exports = function (config) {
 
     // list of files / patterns to load in the browser
     files: [
-
       'test/main.js',
-
-      { pattern: 'widgets/**/*.js', included: false },
+       //exclude all the files as the main.js does this
+      { pattern: 'widgets/**/*.js', included: false }
     ],
+
+        // uncomment the following for code coverage
+    preprocessors: {
+      // source files, that you wanna generate coverage for
+      // do not include tests or libraries
+      // (these files will be instrumented by Istanbul)
+      'widgets/Measurement/Measurement.js': ['coverage']
+    },
 
 
     // list of files to exclude
@@ -27,16 +34,12 @@ module.exports = function (config) {
     ],
 
 
-    // preprocess matching files before serving them to the browser
-    // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
-    },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['dots'],
+    reporters: ['dots', 'coverage'],
 
 
     // web server port
@@ -75,12 +78,20 @@ module.exports = function (config) {
       'karma-mocha',
       'karma-chai',
       'karma-chrome-launcher',
-      'karma-phantomjs-launcher'
+      'karma-phantomjs-launcher',
+      'karma-coverage'
     ],
 
     //stop it showing output from the browser console
     client: {
       captureConsole: false 
+    },
+
+    //see: https://github.com/karma-runner/karma-coverage#options
+    coverageReporter: {
+      type : 'text',
+      dir: 'coverage/'
+      //,file : 'coverage.txt'
     }
-  })
-}
+  });
+};
