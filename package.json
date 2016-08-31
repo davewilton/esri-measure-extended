@@ -1,0 +1,30 @@
+{
+  "name": "app",
+  "version": "1.0.0",
+  "description": "Extends the esri measurement widget to add measurements of the last segment and current segment",
+  "main": "tests\\MeasurementTest.html",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/karma start --single-run --browsers PhantomJS",
+    "lite": "lite-server",
+    "start": "npm run lite"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "jasmine-core": "^2.4.1",
+    "jshint": "^2.9.3",
+    "karma": "^1.2.0",
+    "karma-chai": "^0.1.0",
+    "karma-chrome-launcher": "^2.0.0",
+    "karma-dojo": "0.0.1",
+    "karma-jasmine": "^1.0.2",
+    "karma-mocha": "^1.1.1",
+    "karma-phantomjs-launcher": "^1.0.1",
+    "lite-server": "^2.2.2",
+    "mocha": "^3.0.2"
+  }
+}
