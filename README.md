@@ -6,3 +6,4 @@ This extends the esri measure widget to add segment lengths to the widget
 
 Tested with version 3.17 of the esri javascript api
 
+[try it out!](https://davewilton.github.io/esri-measure-extended/)
