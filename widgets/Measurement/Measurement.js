@@ -104,13 +104,13 @@ define([
       _displaySegmentResult: function (length) {
         //format the number.
         length = this._formatNumberForDisplay(length);
-        this.resultSegmentDiv.innerHTML = "Last Segment lengh: " + length + " " + this.getUnit();
+        this.resultSegmentDiv.innerHTML = "Last Segment length: " + length + " " + this.getUnit();
       },
 
       _displayMouseSegmentResult: function (length) {
         //format the number.
         length = this._formatNumberForDisplay(length);
-        this.resultMouseSegmentDiv.innerHTML = "Segment lengh: " + length + " " + this.getUnit();
+        this.resultMouseSegmentDiv.innerHTML = "Segment length: " + length + " " + this.getUnit();
       },
 
       _formatNumberForDisplay: function (num) {

@@ -106,13 +106,13 @@ define([
         it('Check that the result is displayed for last segment', function () {
           widget._unitDropDown.label = "kilometers";
           widget._displaySegmentResult(10);
-          assert.equal(widget.resultSegmentDiv.innerHTML, "Last Segment lengh: 10.00 kilometers"); 
+          assert.equal(widget.resultSegmentDiv.innerHTML, "Last Segment length: 10.00 kilometers"); 
         });
 
         it('Check that the result is displayed for last mouse segment', function () {
           widget._unitDropDown.label = "kilometers";
           widget._displayMouseSegmentResult(10);
-          assert.equal(widget.resultMouseSegmentDiv.innerHTML, "Segment lengh: 10.00 kilometers"); 
+          assert.equal(widget.resultMouseSegmentDiv.innerHTML, "Segment length: 10.00 kilometers"); 
         });
 
 
