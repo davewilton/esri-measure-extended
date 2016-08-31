@@ -6,7 +6,7 @@ define([
 
   "esri/dijit/Measurement",
   "esri/geometry/Polyline",
-  "esri/geometry/geometryEngine",
+  "esri/geometry/geometryEngine"
 ], function (
   declare,
   lang,
@@ -41,7 +41,7 @@ define([
         //hook in to clear the points on draw end
         this.own(this.on("tool-change", lang.hitch(this, function () {
           this.arrMeasurePoints = [];
-          this.resultSegmentDiv.innerHTML = "&nbsp;"
+          this.resultSegmentDiv.innerHTML = "&nbsp;";
           if (this.resultMouseSegmentDiv) this.resultMouseSegmentDiv.innerHTML = "&nbsp;";
         })));
         this.own(this.on("measure-end", lang.hitch(this, function () {
@@ -55,7 +55,7 @@ define([
         //add a new div to contain our mouse segment length
         if (this.mouseMoveMeasure) this.resultMouseSegmentDiv = domConstruct.create('div', { 'class': 'esriMeasurementResultSegment', innerHTML: '&nbsp;' }, this.resultValueContainer.domNode);
         //add a new div to contain our segment length
-        this.resultSegmentDiv = domConstruct.create('div', { 'class': 'esriMeasurementResultSegment', innerHTML: '&nbsp;' }, this.resultValueContainer.domNode)
+        this.resultSegmentDiv = domConstruct.create('div', { 'class': 'esriMeasurementResultSegment', innerHTML: '&nbsp;' }, this.resultValueContainer.domNode);
 
       },
 
