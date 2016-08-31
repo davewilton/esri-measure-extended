@@ -15,16 +15,16 @@ var dojoConfig = {
             location:"/base"
         }, {
             name: 'esri',
-            location: 'http://js.arcgis.com/3.16/esri'
+            location: 'http://js.arcgis.com/3.17/esri'
         }, {
             name: 'dojo',
-            location: 'http://js.arcgis.com/3.16/dojo/'
+            location: 'http://js.arcgis.com/3.17/dojo/'
         }, {
             name: 'dojox',
-            location: 'http://js.arcgis.com/3.16/dojox'
+            location: 'http://js.arcgis.com/3.17/dojox'
         }, {
             name: 'dijit',
-            location: 'http://js.arcgis.com/3.16/dijit'
+            location: 'http://js.arcgis.com/3.17/dijit'
         }
     ],
     async: true
