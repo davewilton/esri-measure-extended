@@ -19,10 +19,12 @@
   },
   "devDependencies": {
     "chai": "^3.5.0",
+    "chai-spies": "^0.7.1",
     "jasmine-core": "^2.4.1",
     "jshint": "^2.9.3",
     "karma": "^1.2.0",
     "karma-chai": "^0.1.0",
+    "karma-chai-spies": "^0.1.4",
     "karma-chrome-launcher": "^2.0.0",
     "karma-coverage": "^1.1.1",
     "karma-dojo": "0.0.1",
