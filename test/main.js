@@ -11,8 +11,8 @@ Object.keys(window.__karma__.files).forEach(function(file) {
 var dojoConfig = {
     packages: [
         {
-            name:"app",
-            location:"/base"
+            name: 'widgets',
+            location: '/base/widgets'
         }, {
             name: 'esri',
             location: 'http://js.arcgis.com/3.17/esri'

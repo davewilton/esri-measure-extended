@@ -1,5 +1,5 @@
 define([
-  'app/widgets/Measurement/Measurement',
+  'widgets/Measurement/Measurement',
   'esri/map',
   'dojo/dom-construct',
   'dojo/_base/lang'
@@ -10,7 +10,7 @@ define([
   domConstruct,
   lang
 ) {
-    describe('app/widgets/Measurement', function () {
+    describe('widgets/Measurement', function () {
       var widget;
       var destroy = function (widget) {
         if (widget && widget.destroyRecursive) {
