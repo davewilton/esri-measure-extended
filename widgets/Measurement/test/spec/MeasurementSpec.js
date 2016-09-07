@@ -30,7 +30,6 @@ define([
         };
 
         var map = new Map(domConstruct.create('div', null, document.body), mapOptions);
-        map.on('load', lang.hitch(this, function (m) {
         map.on('load', lang.hitch(this, function () {
           // init widget
           widget = new WidgetUnderTest({ map: map }, domConstruct.create('div', null, document.body));
