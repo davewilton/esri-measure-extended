@@ -31,13 +31,30 @@ define([
 
       postCreate: function () {
 
-        console.log('app.Measurement::postCreate', arguments);
         this.inherited(arguments);
+        this._init();
+      },
+
+      _init: function () {
+        try {
+          //add the labels to display the extra results
+          this._addLabels();
+
+          //hook into the measure and map listeners
+          this._addlisteners();
+
+        } catch (error) {
+          console.error('app.Measurement::postCreate', error);
+        }
+      },
+
+      _addlisteners: function () {
 
         //hook into the map click event
         this.map.on('click', lang.hitch(this, this.calcDistance));
 
         //hook in to clear the points on draw end
+<<<<<<< HEAD
         this.own(this.on('tool-change', lang.hitch(this, function () {
           this.arrMeasurePoints = [];
           this.resultSegmentDiv.innerHTML = '&nbsp;';
@@ -52,7 +69,19 @@ define([
         if (this.mouseMoveMeasure) {
           this.own(this.map.on('mouse-move', lang.hitch(this, this.calcMouseDistance)));
         }
+=======
+        this.own(this.on("tool-change", lang.hitch(this, this._onMeasureModeChangeExt)));
 
+        this.own(this.on("measure-end", lang.hitch(this, this._onMeasureEndExt)));
+
+        if (this.mouseMoveMeasure) this.own(this.map.on('mouse-move', lang.hitch(this, this.calcMouseDistance)));
+>>>>>>> origin/master
+
+      },
+
+      _addLabels: function () {
+        //add a new div to contain our mouse segment length
+        this.totalLengthLabel = domConstruct.create('div', { 'class': 'esriMeasurementResultTotal', innerHTML: 'Total Length: ', style: { display: "inline-block" } }, this.resultValueContainer.domNode, "first");
         //add a new div to contain our mouse segment length
         if (this.mouseMoveMeasure) {
           this.resultMouseSegmentDiv = domConstruct.create(
@@ -61,23 +90,43 @@ define([
             this.resultValueContainer.domNode);
         }
         //add a new div to contain our segment length
+<<<<<<< HEAD
         this.resultSegmentDiv = domConstruct.create(
           'div', 
           { 'class': 'esriMeasurementResultSegment', innerHTML: '&nbsp;' }, 
           this.resultValueContainer.domNode);
+=======
+        this.resultSegmentDiv = domConstruct.create('div', { 'class': 'esriMeasurementResultSegment', innerHTML: '&nbsp;' }, this.resultValueContainer.domNode);
+      },
 
+      _onMeasureModeChangeExt: function (evt) {
+        //fires when the mode changes
+        this.arrMeasurePoints = [];
+        this.resultSegmentDiv.innerHTML = "&nbsp;";
+        if (this.resultMouseSegmentDiv) this.resultMouseSegmentDiv.innerHTML = "&nbsp;";
+        this.totalLengthLabel.innerHTML = (evt.toolName === 'distance') ? "Total Length: " : "";
+      },
+>>>>>>> origin/master
+
+      _onMeasureEndExt: function () {
+        this.arrMeasurePoints = [];
       },
 
       calcDistance: function (evt) {
-        try {
 
+<<<<<<< HEAD
           //we are only going to do this for distance
           if (!this.activeTool || this.activeTool.toString().toLowerCase() !== 'distance') {
             return false;
           }
+=======
+        //we are only going to do this for distance
+        if (!this.activeTool || this.activeTool.toString().toLowerCase() !== 'distance') return false;
+>>>>>>> origin/master
 
-          this.arrMeasurePoints.push(evt.mapPoint);
+        this.arrMeasurePoints.push(evt.mapPoint);
 
+<<<<<<< HEAD
           //if we have more than two create a line and measure them
           if (this.arrMeasurePoints.length < 2) {
             return false;
@@ -85,20 +134,22 @@ define([
 
           var length = this._createAndMeasureLine(this.arrMeasurePoints[this.arrMeasurePoints.length - 2], 
           this.arrMeasurePoints[this.arrMeasurePoints.length - 1]);
+=======
+        //if we have more than two create a line and measure them
+        if (this.arrMeasurePoints.length < 2) return false;
 
-          this._displaySegmentResult(length);
+        var length = this._createAndMeasureLine(this.arrMeasurePoints[this.arrMeasurePoints.length - 2], this.arrMeasurePoints[this.arrMeasurePoints.length - 1]);
+>>>>>>> origin/master
 
-          return true;
+        this._displaySegmentResult(length);
 
-        } catch (e) {
-          return false;
-        }
+        return true;
+
       },
 
       calcMouseDistance: function (evt) {
-        //if we have a point to work with we can continue
-        try {
 
+<<<<<<< HEAD
           //we are only going to do this for distance
           if (!this.activeTool || this.activeTool.toString().toLowerCase() !== 'distance') {
             return false;
@@ -107,35 +158,46 @@ define([
           if (this.arrMeasurePoints.length < 1) {
             return false;
           }
+=======
+        //we are only going to do this for distance
+        if (!this.activeTool || this.activeTool.toString().toLowerCase() !== 'distance') return false;
 
-          var length = this._createAndMeasureLine(this.arrMeasurePoints[this.arrMeasurePoints.length - 1], evt.mapPoint);
+        if (this.arrMeasurePoints.length < 1) return false;
+>>>>>>> origin/master
 
-          this._displayMouseSegmentResult(length);
+        var length = this._createAndMeasureLine(this.arrMeasurePoints[this.arrMeasurePoints.length - 1], evt.mapPoint);
 
-          return true;
+        this._displayMouseSegmentResult(length);
 
-        } catch (e) {
-          return false;
-        }
+        return true;
+
       },
 
       _displaySegmentResult: function (length) {
         //format the number.
         length = this._formatNumberForDisplay(length);
+<<<<<<< HEAD
         this.resultSegmentDiv.innerHTML = 'Last Segment lengh: ' + length + ' ' + this.getUnit();
+=======
+        this.resultSegmentDiv.innerHTML = "Last Segment length: " + length + " " + this.getUnit();
+>>>>>>> origin/master
       },
 
       _displayMouseSegmentResult: function (length) {
         //format the number.
         length = this._formatNumberForDisplay(length);
+<<<<<<< HEAD
         this.resultMouseSegmentDiv.innerHTML = 'Segment lengh: ' + length + ' ' + this.getUnit();
+=======
+        this.resultMouseSegmentDiv.innerHTML = "Segment length: " + length + " " + this.getUnit();
+>>>>>>> origin/master
       },
 
       _formatNumberForDisplay: function (num) {
         return Number.format(num, { pattern: this.numberPattern + '0' });
       },
 
-      _createAndMeasureLine: function(point1, point2) {
+      _createAndMeasureLine: function (point1, point2) {
 
         var line = new Polyline(this.map.spatialReference);
         //use the last two points 
@@ -158,7 +220,6 @@ define([
 
         return length;
       }
-
 
     });
   });
